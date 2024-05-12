@@ -1,0 +1,75 @@
+Attention Networks: A simple way to understand Cross-Attention
+Geetansh Kalra
+Geetansh Kalra
+
+·
+Follow
+
+4 min read
+·
+Jul 18, 2022
+343
+
+
+
+
+
+Source: Unsplash
+In recent years, the transformer model has become one of the main highlights of advances in deep learning and deep neural networks. It is mainly used for advanced applications in natural language processing. Google is using it to enhance its search engine results. OpenAI has used transformers to create its famous GPT-2 and GPT-3 models.
+
+Since its debut in 2017, the transformer architecture has evolved and branched out into many different variants, expanding beyond language tasks into other areas. They have been used for time series forecasting. They are the key innovation behind AlphaFold, DeepMind’s protein structure prediction model. Codex, OpenAI’s source code–generation model, is based on transformers. More recently, transformers have found their way into computer vision, where they are slowly replacing convolutional neural networks (CNN) in many complicated tasks.
+
+Researchers are still exploring ways to improve transformers and use them in new applications. Here is a brief explainer about what makes transformers exciting and how they work.
+
+In this post, we will look at the Cross Mechanism. To understand them better you need to have a good understanding of what Attention Networks or Mechanisms are. I won’t cover the introduction for them here for that you can check out my previous post.
+
+Attention Networks: A simple way to understand Self Attention
+“Every once in a while, a revolutionary product comes along that changes everything.” — Steve Jobs
+medium.com
+
+Attention Networks: A simple way to understand Multi-Head Attention
+In recent years NLP has become the fastest evolving area in deep learning along with computer vision. The transformer…
+medium.com
+
+What is Cross-Attention?
+In a Transformer when the information is passed from encoder to decoder that part is known as Cross Attention. Many people also call it as Encoder-Decoder Attention
+
+
+Source: https://vaclavkosar.com/ml/transformers-self-attention-mechanism-simplified, Left-Network: Encoder, Right-Network: Decoder
+To understand Cross-Attention let’s take one of the most famous NLP examples, i.e Transalation of words from one language to another (English to French). In order to do that you would want your model to learn how English letters can be represented as French letters.
+
+English Sentence: Hello, How are you?
+
+French Translation: Bonjour, comment vas-tu?
+
+You would pass your English sentence to the Encoder and the French sentence to the decoder. Let’s concentrate on the Encoder first.
+
+If you have gone through my article on how self-attention works, you know what will happen till the Attention step in the above diagram. Once you have the Final Attention Filter, we multiply it with the value matrix. The result of them is passed to a Linear layer and we get the output. Over here we do the same. Just one step is added that after passing through a FeedForward Network, we give its output to the Decoder Multi-head Attention block.
+
+Well, you might say that we can see this too in the Diagram, But why on earth do we do this step, you might ask? And I would say
+
+
+Source: Google Images
+To establish the relationship between Input and Output Values.
+
+Coming to the decoder block now. The task of the decoder block is to translate the encoder’s attention vector into the output data (e.g., the translated version of the input text). During the training phase, the decoder has access both to the attention vector produced by the encoder and the expected outcome (e.g., the translated string).
+
+Let’s focus on the Decoder Multi-head Attention block and see what’s going on there.
+
+
+Source: https://towardsdatascience.com/attention-please-85bd0abac41
+
+Image by Author
+The decoder uses the same tokenization, word embedding, and attention mechanism to process the expected outcome and create attention vectors.
+
+Due to this mechanism, the words from the source and destination languages are mapped to each other.
+
+Like the encoder module, the decoder attention vector is passed through a feed-forward layer. Its result is then mapped to a vector which is the size of the target data.
+
+Done.
+
+This is how Cross-Attention works.
+
+In the next article, I would be covering Mask Attention
+
+Hope this helps!!
