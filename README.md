@@ -1,7 +1,11 @@
 python3.11 -m venv .venv
+
 source .venv/bin/activate
+
 pip install openai
+
 pip install aiogramm
+
 
 Add information to the context.txt, then generate_answer(user_message) 
 will combine the user's message with the current context.
